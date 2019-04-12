@@ -10,8 +10,9 @@ local use_ssl, ssl = pcall(require, "ssl")
 local Blynk = require("blynk.socket")
 local Timer = require("timer")
 
-assert(#arg >= 1, "Please specify Auth Token")
-local auth = arg[1]
+local auth = io.lines("authkey", "*a")()
+print("authentication key in authkey file is",auth)
+
 
 local blynk = Blynk.new(auth, {
   heartbeat = 10, -- default h-beat is 30
